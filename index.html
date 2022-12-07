@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Todo List</title>
+</head>
+<body>
+    <section class="sec">
+        <div class="wrapper">
+            <h1>Todo List </h1>
+            <div class="toggle"></div>
+            <div class="date">
+                <span id="s_week"></span>
+                <span id="s_date"></span>
+            </div>
+            <div class="myTasks"></div>
+            <div class="newTasks">
+                <input type="text" id="taskInput" class="task-input" placeholder="Adicione uma tarefa...">
+                <button class="task-button"><i class="fas fa-plus"></i></button>
+                <div class="error-txt">Adicione uma tarefa!</div>  
+            </div> 
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@200;300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Poppins', sans-serif; 
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+section{
+    width: 100%;
+    padding: 2%;
+    background: #f0f8ff;
+    transition: background 0.5s;
+}
+section.dark{
+    background: #24292d;
+}
+.wrapper{
+    /* width: 100%; */
+    margin: 2% auto;
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    transition: background 0.5s;
+}
+section.dark .wrapper{
+    background: #323840;  
+}
+.wrapper h1{
+    font-size: 2em;
+    font-weight: 900;
+}
+section.dark .wrapper header{
+    color:#2fa1ff
+}
+/* data e hora */
+.date{
+    height: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #777;
+}
+.date span{
+    color: #777; 
+    line-height: 16px;
+    font-size:1.2em;
+    margin-bottom: 10px;
+}
+section.dark .date span {
+    color: #ccc;
+}
+#s_week{
+    font-size: 1.4em;
+    font-weight: 600;
+}
+#s_date{
+    margin-right: 5px;
+}
+/* toggle */
+.toggle{
+    position: absolute;
+    background:#e9f5ff;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+section.dark .toggle{
+    background: #24292d; 
+}
+.toggle::before{
+    content: '\f186';
+    font-family: fontAwesome;
+    color: #2fa1ff;
+}
+section.dark .toggle::before{
+    content: '\f185';
+    color: #fff;
+}
+/* Minhas tarefas */
+.wrapper .myTasks{
+    height: 60vh;  
+
+}
+.myTasks{
+    overflow-y: scroll; 
+    position: relative;  
+} 
+.myTasks::-webkit-scrollbar{
+    width: 5px;
+    background: #e9f5ff;
+    transition: background 0.5s;
+}
+.myTasks::-webkit-scrollbar-thumb{
+    background-color: #323840;
+    border-radius: 5px;
+  
+}
+section.dark .myTasks::-webkit-scrollbar-thumb{
+    background-color: #ccc;
+}
+section.dark .myTasks::-webkit-scrollbar{
+    background: #24292d;
+}
+/* Tarefas */
+.taskDiv{
+    width: 95%;
+    padding: 10px 5px;
+    border-bottom: 1px solid #d1d3d4; 
+    margin-bottom: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.taskDiv span{
+    flex: 1;
+    font-size: 1.2em;
+    font-weight: 500;
+    word-break: break-all;
+    list-style: none;
+    margin-left: 15px;  
+    cursor: pointer;
+    transition:  0.3s;
+}
+.taskDiv span:hover{
+    font-size: 1.3em;
+}
+.completed span{
+    opacity: 0.4;
+}
+ section.dark .taskDiv span{
+    color: #ccc;  
+} 
+
+.taskDiv button{
+    width: 40px;
+    height: 40px;
+    background: #2fa1ff;
+    color: #fff;
+    border-radius: 5px; 
+    border: none;
+    outline: none;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.trash-btn:hover{
+    color: #2fa1ff;
+    background: #e9f5ff;
+}
+
+section.dark .trash-btn{
+    background: #24292d;
+    color: #fff;
+}
+section.dark .trash-btn:hover{
+    color: #2fa1ff;
+}
+/* Adicionando novas tarefas */
+.newTasks{
+    position: relative;
+    height: 45px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.task-input{
+    width: 80%;
+    height: 100%;
+    font-size: 18px;
+    border-radius: 5px;
+    padding-left: 15px;
+    transition: background 0.5s;
+}
+input{
+    outline: none;
+    border: none;
+    border: 1px solid #ccc; 
+}
+.task-input:focus{
+    outline: none;
+    border-color: #2fa1ff;
+}
+section.dark input{
+    color: #ccc;
+    background:#323840;
+}
+
+.input-error{
+    outline: none;
+    border: 1px solid #dc3545;
+} 
+section.dark .input-error{
+    outline: none;
+    border: 1px solid #dc3545;
+}
+.error-txt{
+    display: none;
+    color: #dc3545;
+    font-size: 1em;
+    margin-left: 10px;
+}
+.error-txt.show-error{
+    display: block;
+}
+
+.newTasks .task-button{
+    width: 45px;
+    height: 100%;
+    background: #2fa1ff;
+    color: #e9f5ff;
+    font-size: 1.2em;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+    transition: background 0.5s;
+}
+.task-button:hover{
+    background: #e9f5ff;
+    color:#2fa1ff;
+}
+section.dark .task-button{
+    background: #24292d;
+    color:#2fa1ff;
+}
+section.dark .task-button:hover{
+    background: #2fa1ff;
+    color: #fff;
+}
+
+.completed{
+    text-decoration: line-through;   
+}
+
+section.dark .completed{
+    color: #000;  
+}
+.fa-trash,.fa-check{
+    pointer-events: none;
+}
+
+@media(min-width:360px){
+    .wrapper{
+        width:50%;
+    }
+    .wrapper .myTasks{
+        height: 66vh;  
+    }
+}
+@media (min-width:768px) {
+   
+    .wrapper{
+        width:70%;
+        max-width: 540px;
+        padding: 25px;
+        margin: 30px auto; 
+    }
+    .wrapper .myTasks{
+      height: 70vh;  
+    }
+    .newTasks{
+        margin-top: 20px;
+    }
+    .task-input{
+        width: 86%;
+    }
+}
+
+@media(min-width:1224px){ 
+    .wrapper{
+        width:30%;
+        margin: 30px auto; 
+    }
+    .wrapper .myTasks{
+        max-height: 320px;  
+    }
+    .task-input{
+        width: 82%;
+    }
+} 
+
+ 
