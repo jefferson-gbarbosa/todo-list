@@ -1,2 +1,15 @@
-# Todo List JavaScript
- Neste projeto vamos criar um todo lis simples em HTML, css e JavaScript puro.
+## Todo List 
+
+Projeto de um Todo List para organização das tarefas diárias.Com ele podemos adicionar,remover e marcar as tarefas concluídas.
+
+## Funcionalidades
+
+- Responsividade
+- Ajuste para o modo escuro
+- Tratamento de erros
+
+## Ferramentas utilizadas
+
+- [x] HTML5
+- [x] CSS3
+- [x] JavaScript
