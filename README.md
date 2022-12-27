@@ -1,6 +1,6 @@
 ## Todo List 
 
-Projeto de um Todo List para organização das tarefas diárias.Com ele podemos adicionar,remover e marcar as tarefas concluídas.
+Projeto de um Todo List para organização das tarefas diárias. Com ele podemos adicionar,remover e marcar as tarefas concluídas.
 
 ## Funcionalidades
 
