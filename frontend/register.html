@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <title>Register Page</title>
+</head>
+<body>
+    <section class="container-login">
+        <div class="wrapper">
+            <form class="form" id="form-register" >
+                <h2 class="login-title">Crie sua conta grátis</h2>
+                <p class="login-subtitle">Preencha seus dados</p>
+                <div class="field email">
+                    <div class="input-area">
+                        <input type="email" placeholder="Endereço de Email" aria-label="Email" autocomplete="email" required />
+                        <i class="icon fas fa-envelope"></i>
+                    </div>
+                    <div class="error error-txt">E-mail pode estar em branco</div>
+                </div>
+                <div class="field password">
+                    <div class="input-area">
+                       <input type="password" id="password" placeholder="Senha" aria-label="Senha" autocomplete="new-password" required />
+                        <i class="icon1 fas fa-eye-slash"></i>
+                        <i class="icon fas fa-lock"></i>
+                    </div>
+                    <div class="error error-txt">A senha pode estar em branco</div>
+                </div>
+               
+                <button class="button-txt" id="registerBtn">
+                    Criar conta
+                </button>
+                <div class="pass-link"><a href="login.html">Já tenho conta. Fazer login.</a></div>
+            </form>
+        </div>
+    </section>
+    <script src="js/register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

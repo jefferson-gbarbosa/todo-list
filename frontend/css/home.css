@@ -1,0 +1,29 @@
+.home{
+   display: flex;
+   gap: 1rem;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+}
+.home-img{
+  width: 470px;
+}
+.home-img img{
+  width: 100%;
+}
+.home-container{
+  display: flex;
+}
+.content{
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .home{
+    gap: 3rem;
+  }
+  .home-img{
+    width: 270px;
+  }
+}

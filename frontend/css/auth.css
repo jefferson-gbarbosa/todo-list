@@ -1,0 +1,178 @@
+@import url('base.css');
+
+.container-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.login-title{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+.login-subtitle{
+  color: var(--secondary-text);
+  margin-bottom: 1rem;
+}
+.login-title,.login-subtitle{
+  text-align: center;
+}
+.form{
+  padding: 15px 20px 50px 20px;
+}
+.form.activeFormBox{
+  display: block;
+}
+.form .field{
+  width: 100%;
+  margin-bottom: 20px;
+}
+.name{
+  display: none;
+}
+.name.activeInputName{
+  display: block;
+}
+.form .field .input-area{
+  height: 50px;
+  width: 100%;
+  position: relative;
+}
+.form input{
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 0 45px;
+  font-size: 1rem;
+  background: none;
+  caret-color: var(--dark-bg-color);
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  border-bottom-width: 2px;
+  transition: all 0.2s ease;
+}
+.form .field input:focus,
+.form .field.valid input{
+  border-color: var(--dark-bg-color);
+}
+.form .field.error input{
+  border-color: #dc3545;
+}
+.field .input-area i{
+  position: absolute;
+  top: 50%;
+  font-size: 18px;
+  transform: translateY(-50%);
+}
+.input-area .icon{
+  left: 15px;
+  color: #bfbfbf;
+  transition: color 0.2s ease;
+}
+.input-area .icon1{
+  right: 15px;
+  color: var(--dark-bg-color);
+  cursor: pointer;
+}
+.form input:focus ~ .icon,
+.form .field.valid .icon{
+  color: var(--dark-bg-color);
+}
+.form .field.error input:focus ~ .icon{
+  color: #bfbfbf;
+}
+.form input::placeholder{
+  color: #bfbfbf;
+  font-size: 0.95rem;
+}
+.form .field .error{
+  color: #dc3545;
+  text-align: left;
+}
+.form .field .error{
+  display: none;
+}
+.form .field.error .error{
+  display: block;
+}
+.form .pass-link{
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 20px;
+}
+.form a{
+  color: var(--secondary-text);
+}
+.form a:hover{
+  text-decoration: underline;
+}
+.button-txt{
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 5px;
+  color: var(--input-bg);
+  padding: 0;
+  border: none;
+  background: var(--dark-bg-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button-txt:hover{
+  background: var(--dark-secondary-text);
+}
+
+@media (max-width: 768px) {
+  .container-login {
+    padding: 20px;
+  }
+
+  .form {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px 15px 40px 15px;
+  }
+
+  .login-title {
+    font-size: 1.25rem;
+  }
+
+  .form input {
+    padding: 0 40px;
+    font-size: 1rem;
+  }
+
+  .button-txt {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsividade para telas muito pequenas (até 480px) */
+@media (max-width: 480px) {
+  .form {
+    padding: 10px 10px 30px 10px;
+  }
+
+  .login-title {
+    font-size: 1.1rem;
+  }
+
+  .login-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .form input {
+    padding: 0 35px;
+    font-size: 0.95rem;
+  }
+
+  .button-txt {
+    height: 45px;
+    font-size: 0.85rem;
+  }
+}

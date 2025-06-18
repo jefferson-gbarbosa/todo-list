@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@200;300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Poppins', sans-serif; 
+}
+
+:root {
+  /* Light Theme */
+  --bg-color: #f0f8ff;
+  --card-bg: #fff;
+  --text-color: #333;
+  --secondary-text: #777;
+  --accent-color: #2fa1ff;
+  --scrollbar-bg: #e9f5ff;
+  --scrollbar-thumb: #323840;
+  --input-bg: #fff;
+  --border-color: #d1d3d4;
+  --button-hover: #e9f5ff;
+  
+  /* Dark Theme */
+  --dark-bg-color: #24292d;
+  --dark-card-bg: #323840;
+  --dark-text-color: #ccc;
+  --dark-secondary-text: #aaa;
+  --dark-accent-color: #2fa1ff;
+  --dark-scrollbar-bg: #24292d;
+  --dark-scrollbar-thumb: #ccc;
+  --dark-input-bg: #323840;
+  --dark-border-color: #444;
+  --dark-button-hover: #24292d;
+
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+html {
+  scroll-behavior: smooth;
+}
+body{
+  background: var(--bg-color);  
+}
+
+a{
+    text-decoration: none;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    padding: 2%;
+    background: var(--bg-color);
+    transition: all 0.5s ease;
+}
+.container.dark {
+  --bg-color: var(--dark-bg-color);
+  --card-bg: var(--dark-card-bg);
+  --text-color: var(--dark-text-color);
+  --secondary-text: var(--dark-secondary-text);
+  --accent-color: var(--dark-accent-color);
+  --scrollbar-bg: var(--dark-scrollbar-bg);
+  --scrollbar-thumb: var(--dark-scrollbar-thumb);
+  --input-bg: var(--dark-input-bg);
+  --border-color: var(--dark-border-color);
+  --button-hover: var(--dark-button-hover);
+}
+.wrapper{
+    width: 90%;
+    max-width: 540px;
+    margin: 2% auto;
+    position: relative;
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    transition: all 0.5s ease;
+}
+
+
+@media screen and (min-width:360px){
+    .wrapper .myTasks{
+        height: 66vh;  
+    }
+}
+@media screen and (min-width:768px) {
+    .wrapper{
+        width:70%;
+        margin: 6% auto;
+        max-width: 540px;
+        padding: 25px;
+        margin: 30px auto; 
+    }
+    .wrapper .myTasks{
+      height: 70vh;  
+    }
+    .newTasks{
+        margin-top: 20px;
+    }
+    .task-input{
+        width: 86%;
+    }
+}
+
+@media screen and (min-width:1224px){ 
+    .wrapper{
+        width:30%;
+        margin: 30px auto; 
+    }
+    .wrapper .myTasks{
+        max-height: 320px;  
+    }
+    .task-input{
+        width: 82%;
+    }
+} 
+
+@media screen and (max-width: 780px) {
+    .container{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+    }
+     .wrapper{
+        margin: 6% auto;
+    }
+}
