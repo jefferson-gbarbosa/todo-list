@@ -31,20 +31,20 @@ Este é um aplicativo completo de Lista de Tarefas (Todo List), com backend em *
 
 ## 📸 Telas do Projeto
 
-![Página inicial](.github/screenshot-01.png);
-![Página de login](.github/screenshot-02.png);
-![Página de register](.github/screenshot-03.png);
-![Página de tarefas](.github/screenshot-04.png);
-![Tarefas completas](.github/screenshot-05.png);
-![Tarefas pendentes](.github/screenshot-06.png);
-![Tema escuro](.github/screenshot-07.png);
+![Página inicial](.github/screenshot-01.png)
+![Página de login](.github/screenshot-02.png)
+![Página de register](.github/screenshot-03.png)
+![Página de tarefas](.github/screenshot-04.png)
+![Tarefas completas](.github/screenshot-05.png)
+![Tarefas pendentes](.github/screenshot-06.png)
+![Tema escuro](.github/screenshot-07.png)
 
 ## 🧑‍💻 Como Executar o Projeto
 
 ### 📦 1. Clonar o projeto
 ```bash
-git clone https://github.com/seu-usuario/seu-repo.git
-cd seu-repo
+git clone https://github.com/jefferson-gbarbosa/todo-list.git
+cd todo-list
 ```
 
 ### 📁 2. Instalar dependências do backend
@@ -92,7 +92,6 @@ ou use uma extensão como "Live Server" no VSCode.
 - `POST /api/sign-in` – Retorna JWT + userId
 
 ### 📌 Tarefas
-http://localhost:3000/api/tasks?userId=${userId}&sortBy=createdAt
 
 - `GET /api/tasks?userId=${userId}&sortBy=createdAt`
 - `POST /api/create-tasks` – Cria nova tarefa
