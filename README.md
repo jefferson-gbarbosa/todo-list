@@ -29,16 +29,6 @@ Este é um aplicativo completo de Lista de Tarefas (Todo List), com backend em *
 - SweetAlert2
 - LocalStorage (para token, userId e tema)
 
-## 📸 Telas do Projeto
-
-![Página inicial](.github/screenshot-01.png)
-![Página de login](.github/screenshot-02.png)
-![Página de register](.github/screenshot-03.png)
-![Página de tarefas](.github/screenshot-04.png)
-![Tarefas completas](.github/screenshot-05.png)
-![Tarefas pendentes](.github/screenshot-06.png)
-![Tema escuro](.github/screenshot-07.png)
-
 ## 🧑‍💻 Como Executar o Projeto
 
 ### 📦 1. Clonar o projeto
@@ -100,7 +90,13 @@ ou use uma extensão como "Live Server" no VSCode.
 
 ## 📸 Telas do Projeto
 
-📷 Exemplo de tela inicial, tarefas adicionadas, modo escuro, e alertas de erro.
+![Página inicial](.github/screenshot-01.png)
+![Página de login](.github/screenshot-02.png)
+![Página de register](.github/screenshot-03.png)
+![Página de tarefas](.github/screenshot-04.png)
+![Tarefas completas](.github/screenshot-05.png)
+![Tarefas pendentes](.github/screenshot-06.png)
+![Tema escuro](.github/screenshot-07.png)
 
 ## 🔒 Observações de Segurança
 
