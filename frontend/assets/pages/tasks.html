@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Gerencie suas tarefas diárias, acompanhe seu progresso e aumente sua produtividade. Adicione, complete e delete tarefas de forma fácil e intuitiva.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/tasks.css">
-
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="stylesheet" href="../css/styles.min.css">
     <title>Tasks Page</title>
 </head>
 <body>
@@ -17,10 +14,6 @@
         <div class="wrapper">
             <h1>Todo List </h1>
             <div class="toggle-dark-light"></div>
-            <div class="date">
-                <span id="s_week"></span>
-                <span id="s_date"></span>
-            </div>
            <div class="filter-buttons">
                 <button data-filter="all" class="filter-btn active-filter">Todas</button>
                 <button data-filter="true" class="filter-btn">Completas</button>
@@ -29,14 +22,15 @@
             <div class="myTasks"></div>
             <div class="newTasks">
                 <input type="text" id="taskInput" class="task-input" placeholder="Adicione uma tarefa...">
-                <button class="task-button"><i class="fas fa-plus"></i></button>
+                <button class="task-button">
+                    <img src="../images/icons/plus-icon.svg" alt="Plus Icon" class="icon">
+                </button>
                 <div class="error-txt">Adicione uma tarefa!</div>  
             </div> 
         </div>
     </section>
-    
-    <script src="js/tasks.js"></script>
-    <script src="js/util.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/tasks.js"></script>
+    <script src="../js/util.js"></script>
 </body>
 </html>

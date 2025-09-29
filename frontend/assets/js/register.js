@@ -1,11 +1,11 @@
 // Seletores
-const form = document.querySelector("#form-login");
+const form = document.querySelector("#form-register");
 const eField = form.querySelector(".email");
 const eInput = eField.querySelector("input");
 const pField = form.querySelector(".password");
 const pInput = pField.querySelector("input");
-const eyeIcon = form.querySelector(".fa-eye-slash");
-const loginBtn = document.querySelector("#loginBtn");
+const eyeIcon = form.querySelector(".icon1");
+const registerBtn = document.querySelector("#registerBtn");
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -21,7 +21,6 @@ function setValidationState(field, isValid, message = "") {
     if (errorText) errorText.innerText = message;
   }
 }
-
 function validateEmail() {
   const email = eInput.value.trim();
   if (!email) {
@@ -35,7 +34,6 @@ function validateEmail() {
     return true;
   }
 }
-
 function validatePassword() {
   const password = pInput.value.trim();
   if (!password) {
@@ -46,55 +44,63 @@ function validatePassword() {
     return true;
   }
 }
-
 eInput.addEventListener("input", validateEmail);
 pInput.addEventListener("input", validatePassword);
-
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  console.log("Formulário enviado");
   const isEmailValid = validateEmail();
   const isPasswordValid = validatePassword();
-
   if (!isEmailValid  || !isPasswordValid) return;
-
   const email = eInput.value.trim();
   const password = pInput.value.trim();
-
-  loginBtn.disabled = true;
-  loginBtn.innerText = "Entrando...";
-
+  registerBtn.disabled = true;
+  registerBtn.innerText = "Criando...";
   try {
-    const response = await fetch('http://localhost:3000/api/sign-in', {
+    const response = await fetch('http://localhost:3000/api/sign-up', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     });
-
     const data = await response.json();
-
     if (!response.ok) {
-      Swal.fire({ icon: 'error', title: 'Erro', text: data.message || 'Falha no login' });
-    } else {
-      Swal.fire({ icon: 'success', title: 'Sucesso', text: 'Redirecionando...', timer: 1500, showConfirmButton: false })
-        .then(() => {
-          localStorage.setItem('token', data.token);
-          localStorage.setItem('userId', data.user.id);
-          window.location.href = 'tasks.html';
-        });
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro ao registrar',
+        text: data.message || 'Falha ao registrar usuário.',
+      });
+      return;
     }
+    Swal.fire({
+      icon: 'success',
+      title: 'Conta criada com sucesso!',
+      text: 'Redirecionando para login...',
+      timer: 1800,
+      showConfirmButton: false
+    }).then(() => {
+      window.location.href = 'login.html';
+    });
   } catch (err) {
     console.error(err);
-    Swal.fire({ icon: 'error', title: 'Erro', text: 'Erro ao conectar com o servidor.' });
+    Swal.fire({
+      icon: 'error',
+      title: 'Erro',
+      text: 'Erro ao conectar com o servidor.',
+    });
   } finally {
-    loginBtn.disabled = false;
-    loginBtn.innerText = "Entrar";
+    registerBtn.disabled = false;
+    registerBtn.innerText = "Criar conta";
   }
 });
-
 eyeIcon.addEventListener("click", () => {
   const isPasswordVisible = pInput.type === "text";
   pInput.type = isPasswordVisible ? "password" : "text";
-  eyeIcon.classList.toggle("fa-eye");
-  eyeIcon.classList.toggle("fa-eye-slash");
+  if(isPasswordVisible){
+    eyeIcon.src = "../images/icons/eye-slash-icon.svg";
+    eyerIcon.alt ="Eye Slash Icon"
+  }else{
+    eyeIcon.src = "../images/icons/eye-icon.svg";
+    eyeIcon.alt ="Eye Open Icon"
+  }
   eyeIcon.style.color = "#24292d";
 });

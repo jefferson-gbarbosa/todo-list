@@ -7,10 +7,10 @@ Este é um aplicativo completo de Lista de Tarefas (Todo List), com backend em *
 - ✅ Criar tarefas
 - 📋 Listar todas as tarefas do usuário
 - 🔁 Marcar tarefas como concluídas/incompletas
+- ✏️ Editar o título das tarefas
 - ❌ Deletar tarefas
 - 🔐 Autenticação com JWT
 - 🌙 Tema claro/escuro
-- 📅 Exibição da data atual
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -55,7 +55,7 @@ PORT=3000
 ### 🧪 4. Rodar as migrations (Prisma)
 ```bash
 npx prisma generate
-npx prisma migrate dev
+npx prisma db push
 ```
 
 ### ▶️ 5. Iniciar o servidor backend
@@ -85,7 +85,7 @@ ou use uma extensão como "Live Server" no VSCode.
 
 - `GET /api/tasks?userId=${userId}&sortBy=createdAt`
 - `POST /api/create-tasks` – Cria nova tarefa
-- `PUT /api/tasks/:id` – Atualiza campo `completed`
+- `PUT /api/tasks/:id` – Atualiza o título (`title`) ou o status (`completed`) da tarefa
 - `DELETE /api/tasks/:id` – Remove tarefa
 
 ## 📸 Telas do Projeto

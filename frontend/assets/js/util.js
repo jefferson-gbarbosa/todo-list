@@ -10,5 +10,5 @@ if (!token || token.trim() === '') {
 function logout(){
     localStorage.removeItem('token');
     localStorage.removeItem("userId");
-    window.location.href = 'index.html';
+    window.location.href = '../../index.html';
 }

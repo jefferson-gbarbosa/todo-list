@@ -5,14 +5,10 @@ const myTasks = document.querySelector('.myTasks');
 const toggleDarkLight = document.querySelector('.toggle-dark-light');
 const container = document.querySelector('.container');
 const filterButtons = document.querySelectorAll('.filter-btn');
-
 document.addEventListener("DOMContentLoaded", () => {
-    showDate();
     checkDarkMode();
     fetchTasks();
 });
-
-// Helpers
 function getToken() {
     return localStorage.getItem("token");
 }
@@ -20,65 +16,32 @@ function getToken() {
 function getUserId() {
     return localStorage.getItem("userId");
 }
-
-// Modo dark/light
 toggleDarkLight.addEventListener('click', function(){
     container.classList.toggle('dark');
     localStorage.setItem('darkMode', container.classList.contains('dark'));
 })
-
-// Verificar modo ao carregar a página
 function checkDarkMode() {
     if (localStorage.getItem('darkMode') === 'true') {
         container.classList.add('dark');
     }
 }
-
-// verificar campos vazios
 todoButton.addEventListener('click', function() {
     if (validateInput()) {
         addTodo();
     }
 })
-
-// Enter para adicionar
 todoInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter' && validateInput()) {
         addTodo();
     }
 });
 
-// Evento de input para remover erro ao digitar
 todoInput.addEventListener('input', function() {
     if (todoInput.value.trim() !== '') {
         document.querySelector('.error-txt').classList.remove('show-error');
         todoInput.classList.remove('input-error');
     }
 });
-
-
-// Mostrar e formatar a data atual
-function showDate() {
-    const newDate = new Date();
-    let weekDay = newDate.getDay();
-    let day = newDate.getDate();
-    let month = newDate.getMonth();
-    const year = newDate.getFullYear();
-
-    // Formatar dia e mês com zero à esquerda
-    day = day < 10 ? '0' + day : day;
-    month = month < 9 ? '0' + (month + 1) : (month + 1); 
-
-    document.querySelector('#s_date').textContent = `${day}/${month}/${year}`;
-
-    // Dias da semana em português
-    const weekDays = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'];
-    document.querySelector('#s_week').textContent = weekDays[weekDay] + ',';
-}
-
-showDate();
-
-// Função para validar input
 function validateInput() {
     if (todoInput.value.trim() === '') {
         showError('Campo vazio', 'Por favor, digite uma tarefa antes de adicionar');
@@ -88,17 +51,13 @@ function validateInput() {
     todoInput.classList.remove('input-error');
     return true;
 }
-
-// funcao para adicionar elementos
 async function addTodo() {
     const title = todoInput.value.trim();
     const userId = getUserId();
-
     if (!userId) {
         showError("Erro", "Usuário não autenticado");
         return;
     }
-
     try {
         const response = await fetch("http://localhost:3000/api/create-tasks", {
             method: "POST",
@@ -122,11 +81,9 @@ async function addTodo() {
     }
 }
 function renderTask(task){
-    // criar elementos
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('taskDiv');
     if (task.completed) todoDiv.classList.add('completed');
-
     const todoSpan = document.createElement('span');
     todoSpan.classList.add('taskname')
     todoSpan.innerText = task.title;
@@ -134,36 +91,43 @@ function renderTask(task){
         todoSpan.classList.add("completed-task");
     }
     todoDiv.appendChild(todoSpan);
-
-
     const trashBtn = document.createElement('button');
-    trashBtn.innerHTML = '<i class="fa fa-trash"></i>';
+    const editBtn = document.createElement('button');
+    trashBtn.innerHTML = `<img src="../images/icons/trash-icon.svg" alt="Trash Icon">`;
+    editBtn.innerHTML = `<img src="../images/icons/edit-icon.svg" alt="Edit Icon">`;
     trashBtn.classList.add('trash-btn');
+    editBtn.classList.add('edit-btn');
     trashBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         deleteTask(task.id);
     });
+    editBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showEditPopup(task.id, task.title);
+    });
+    if (task.completed) {
+        editBtn.disabled = true;
+        editBtn.style.opacity = "0.5";
+        editBtn.style.cursor = "not-allowed";
+    }
+    todoDiv.appendChild(editBtn);
     todoDiv.appendChild(trashBtn);
-
     todoDiv.addEventListener('click', (e) => {
-        if (e.target.closest('.trash-btn')) return; 
-        toggleTaskCompleted(task.id, !task.completed);
+        if (e.target.closest('.trash-btn') || e.target.closest('.edit-btn')) return; 
+        updateTask(task.id, { completed: !task.completed });
     });
     myTasks.appendChild(todoDiv);
 }
-
 async function fetchTasks(completed = null) {
     const userId = getUserId();
     if (!userId) {
         showError("Erro", "Usuário não autenticado.");
         return;
     }
-
     let url = `http://localhost:3000/api/tasks?userId=${userId}&sortBy=createdAt`;
     if (completed !== null) {
         url += `&completed=${completed}`;
     }
-
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -178,14 +142,12 @@ async function fetchTasks(completed = null) {
         console.error("Erro ao carregar tarefas:", err);
     }
 }
-
 async function deleteTask(id) {
     const token = getToken();
     if (!token) {
         showError("Erro", "Token não encontrado.");
         return;
     }
-
     try {
         await fetch(`http://localhost:3000/api/tasks/${id}`, {
             method: "DELETE",
@@ -198,14 +160,60 @@ async function deleteTask(id) {
         console.error("Erro ao deletar tarefa:", err);
     }
 }
-
-async function toggleTaskCompleted(id, completed) {
+async function updateTask(id, data) {
     const token = getToken();
     if (!token) {
         showError("Erro", "Token não encontrado.");
         return;
     }
+    try {
+        const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        });
+        if (!response.ok) {
+            const error = await response.json();
+            showError("Erro ao atualizar", error.message || "Não foi possível atualizar a tarefa.");
+            return;
+        }
+        fetchTasks(getActiveFilter());
+    } catch (err) {
+        console.error("Erro ao atualizar tarefa:", err);
+        showError("Erro de Conexão", "Não foi possível conectar ao servidor para atualizar a tarefa.");
+    }
+}
+function showEditPopup(id, currentTitle) {
+    Swal.fire({
+        title: 'Editar Tarefa',
+        input: 'text',
+        inputValue: currentTitle,
+        showCancelButton: true,
+        confirmButtonText: 'Salvar',
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#2fa1ff',
+        cancelButtonColor: '#24292d',
+        inputValidator: (value) => {
+            if (!value.trim()) {
+                return 'Você precisa escrever algo!'
+            }
+        }
+    }).then((result) => {
+        if (result.isConfirmed && result.value.trim() !== currentTitle) {
+            updateTask(id, { title: result.value.trim() });
+        }
+    });
+}
 
+async function editTask(id, title) {
+    const token = getToken();
+    if (!token) {
+        showError("Erro", "Token não encontrado.");
+        return;
+    }
     try {
         await fetch(`http://localhost:3000/api/tasks/${id}`, {
             method: "PUT",
@@ -213,7 +221,7 @@ async function toggleTaskCompleted(id, completed) {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify({ completed })
+            body: JSON.stringify({ title })
         });
         fetchTasks();
     } catch (err) {
@@ -250,21 +258,18 @@ function showError(title, text) {
 
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remover classe ativa de todos
         filterButtons.forEach(btn => btn.classList.remove('active-filter'));
-        // Adicionar classe ativa ao clicado
         button.classList.add('active-filter');
-
-        // Verifica qual botão foi clicado
         const value = button.getAttribute('data-filter');
-        let completed = null;
-        if (value === 'true') completed = true;
-        else if (value === 'false') completed = false;
-        else completed = null;
-
-        fetchTasks(completed);
+        fetchTasks(getActiveFilter());
     });
 });
 
-
-
+function getActiveFilter() {
+    const activeButton = document.querySelector('.filter-btn.active-filter');
+    const filterValue = activeButton.getAttribute('data-filter');
+    
+    if (filterValue === 'true') return true;
+    if (filterValue === 'false') return false;
+    return null;
+}

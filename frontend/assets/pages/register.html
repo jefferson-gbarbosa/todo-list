@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Crie sua conta gratuitamente em nosso aplicativo de Todo List. Comece a organizar suas tarefas, aumentar sua produtividade e manter o foco em seus objetivos.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/auth.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="stylesheet" href="../css/styles.min.css">
+    
     <title>Register Page</title>
 </head>
 <body>
@@ -16,16 +17,16 @@
                 <p class="login-subtitle">Preencha seus dados</p>
                 <div class="field email">
                     <div class="input-area">
-                        <input type="email" placeholder="Endereço de Email" aria-label="Email" autocomplete="email" required />
-                        <i class="icon fas fa-envelope"></i>
+                        <input type="email" placeholder="Endereço de Email" aria-label="Email" autocomplete="email" />
+                        <img src="../images/icons/envelope-icon.svg" alt="Envelope Icon" class="icon">
                     </div>
                     <div class="error error-txt">E-mail pode estar em branco</div>
                 </div>
                 <div class="field password">
                     <div class="input-area">
-                       <input type="password" id="password" placeholder="Senha" aria-label="Senha" autocomplete="new-password" required />
-                        <i class="icon1 fas fa-eye-slash"></i>
-                        <i class="icon fas fa-lock"></i>
+                       <input type="password" id="password" placeholder="Senha" aria-label="Senha" autocomplete="new-password"/>
+                        <img src="../images/icons/lock-icon.svg" alt="Lock Icon" class="icon">
+                        <img src="../images/icons/eye-slash-icon.svg" alt="Eyer Slash Icon" class="icon1">
                     </div>
                     <div class="error error-txt">A senha pode estar em branco</div>
                 </div>
@@ -37,7 +38,7 @@
             </form>
         </div>
     </section>
-    <script src="js/register.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/register.js"></script>
 </body>
 </html>
